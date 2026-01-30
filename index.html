@@ -720,26 +720,27 @@
                         Saturday 31 January
                     </p>
                     <h2>Arrive & Explore</h2>
-                    <p style="color: var(--slate-400); margin-bottom: 1rem;">Head west into Mid Wales, stopping at the spectacular Elan Valley dams before continuing through Hafren Forest to your cottage in Dolgellau. Arrive with time to explore the village and settle in.</p>
+                    <p style="color: var(--slate-400); margin-bottom: 1rem;">Head west into Mid Wales, stopping at the spectacular Elan Valley dams, walking to the source of the Severn at Hafren Forest, then crossing the iconic Barmouth Bridge before arriving at your cottage in Dolgellau.</p>
 
                     <div class="accommodation-features">
                         <span class="feature-tag" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">🏠 Brentwood</span>
                         <span class="feature-tag" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">🏛️ Elan Valley</span>
                         <span class="feature-tag" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">🌲 Hafren Forest</span>
+                        <span class="feature-tag" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">🌉 Barmouth Bridge</span>
                         <span class="feature-tag" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">🏘️ Dolgellau</span>
                     </div>
 
                     <div class="rating" style="color: var(--slate-400); margin-bottom: 0.5rem;">
-                        🚗 ~4.5 hours driving
+                        🚗 ~5 hours driving • 4 stops
                     </div>
 
-                    <a href="https://maps.app.goo.gl/Sm59Fa85KpBfX2Au7" class="airbnb-btn" target="_blank" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
+                    <a href="https://maps.app.goo.gl/FRk7WgqpdU9bPsGLA" class="airbnb-btn" target="_blank" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
                         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                         View on Google Maps
                     </a>
                 </div>
                 <div class="map-section">
-                    <iframe src="https://maps.google.com/maps?saddr=CM14+4SF,Brentwood&daddr=Elan+Valley+Visitor+Centre,Rhayader+to:Hafren+Forest,Llanidloes+to:Dolgellau&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://maps.google.com/maps?saddr=CM14+4SF,Brentwood&daddr=Elan+Valley+Visitor+Centre,Rhayader+to:Hafren+Forest,Llanidloes+to:Barmouth+Bridge,Barmouth+to:Dolgellau&output=embed" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
 
@@ -859,7 +860,7 @@
         <!-- Route Summary -->
         <div class="route-summary">
             <div class="route-stat">
-                <h4>8</h4>
+                <h4>9</h4>
                 <p>Stunning Locations</p>
             </div>
             <div class="route-stat">
@@ -911,11 +912,20 @@
                             <div class="stop-details">
                                 <p class="stop-name">Hafren Forest</p>
                                 <p class="stop-desc">Source of the River Severn. Short forest walk if time permits.</p>
-                                <span class="stop-drive">🚗 1hr 15min to cottage</span>
+                                <span class="stop-drive">🚗 1hr to next</span>
                             </div>
                         </div>
                         <div class="stop">
                             <span class="stop-time">Afternoon</span>
+                            <div class="stop-icon">🌉</div>
+                            <div class="stop-details">
+                                <p class="stop-name">Barmouth Bridge</p>
+                                <p class="stop-desc">Walk across the iconic Victorian railway bridge over the Mawddach estuary. Stunning views of Cadair Idris. £1 toll for pedestrians.</p>
+                                <span class="stop-drive">🚗 20min to cottage</span>
+                            </div>
+                        </div>
+                        <div class="stop">
+                            <span class="stop-time">Late PM</span>
                             <div class="stop-icon">🏠</div>
                             <div class="stop-details">
                                 <p class="stop-name">Arrive Dolgellau</p>
@@ -1059,6 +1069,18 @@
                         <p>Source of the River Severn, Britain's longest river. Peaceful woodland walks to the spring.</p>
                         <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">"Hafren" is the Welsh name for Severn, from the Celtic goddess Sabrina. The river flows 220 miles to the Bristol Channel.</p>
                         <span class="location-tag">Forest</span>
+                    </div>
+                </div>
+
+                <div class="location-card" onclick="openModal('modal-barmouth')">
+                    <div class="location-img">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barmouth_Bridge_-_geograph.org.uk_-_1407741.jpg?width=640" alt="Barmouth Bridge" loading="lazy">
+                    </div>
+                    <div class="location-content">
+                        <h3>Barmouth Bridge</h3>
+                        <p>Iconic Victorian wooden railway viaduct stretching half a mile across the Mawddach estuary with stunning mountain views.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Built in 1867, this Grade II* listed bridge is one of the oldest and longest wooden viaducts still in use in Britain.</p>
+                        <span class="location-tag">Bridge & Estuary</span>
                     </div>
                 </div>
 
@@ -1328,6 +1350,37 @@
                 <div class="tips">
                     <h4>📍 Visitor Tips</h4>
                     <p style="margin-bottom: 0;">The source is a 3-mile walk from the car park. Wear waterproof boots - it's boggy! The forest road is single-track. No facilities so bring snacks and drinks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-barmouth">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-barmouth')">&times;</button>
+            <div class="image-scroller" id="scroller-barmouth">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barmouth_Bridge_-_geograph.org.uk_-_1407741.jpg?width=800" alt="Barmouth Bridge">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barmouth_Railway_Bridge.jpg?width=800" alt="Barmouth Railway Bridge">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mawddach_Estuary_-_geograph.org.uk_-_1437019.jpg?width=800" alt="Mawddach Estuary">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barmouth_and_the_Mawddach_Estuary_-_geograph.org.uk_-_31118.jpg?width=800" alt="Barmouth and Mawddach">
+            </div>
+            <div class="image-dots" data-scroller="scroller-barmouth">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
+            <div class="modal-body">
+                <span class="tag">Bridge & Estuary</span>
+                <h2>Barmouth Bridge</h2>
+                <p>One of Britain's most spectacular railway crossings - a half-mile wooden viaduct stretching across the Mawddach estuary with Cadair Idris rising dramatically behind. You can walk across for incredible views in both directions.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">Built in 1867 for the Cambrian Railways, this Grade II* listed bridge is 820 metres long with 113 wooden spans. A metal swing section in the middle once allowed tall ships to pass. In 1980, marine worms threatened the structure - over 500 wooden piles were replaced in a £4.3 million restoration. The bridge remains one of the oldest and longest wooden viaducts in regular use in Britain.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">£1 pedestrian toll (honesty box at Barmouth end). Walk takes 15-20 minutes each way. Best photos at sunset with Cadair Idris in the background. Car park in Barmouth town. The Mawddach Trail starts here for walkers/cyclists. 🚁 Incredible drone location - the bridge from above is spectacular!</p>
                 </div>
             </div>
         </div>
