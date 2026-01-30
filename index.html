@@ -565,6 +565,53 @@
             border-radius: 20px 20px 0 0;
         }
 
+        /* Image Scroller */
+        .image-scroller {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .image-scroller::-webkit-scrollbar {
+            display: none;
+        }
+
+        .image-scroller img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            scroll-snap-align: start;
+        }
+
+        .image-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            background: linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.8) 100%);
+            margin-top: -50px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .image-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .image-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
         .modal-body {
             padding: 2rem;
         }
@@ -1227,18 +1274,31 @@
     <div class="modal-overlay" id="modal-elan">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-elan')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Craig_Goch_Dam.jpg?width=800" alt="Elan Valley">
+            <div class="image-scroller" id="scroller-elan">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Craig_Goch_Dam.jpg?width=800" alt="Craig Goch Dam">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pen_y_Garreg_reservoir_and_dam,_Elan_Valley_-_geograph.org.uk_-_910474.jpg?width=800" alt="Pen y Garreg Dam">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Elan_Valley_Dams_-_panoramio.jpg?width=800" alt="Elan Valley Dams Panorama">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Garreg-ddu_Reservoir_-_geograph.org.uk_-_1241376.jpg?width=800" alt="Garreg-ddu Reservoir">
+            </div>
+            <div class="image-dots" data-scroller="scroller-elan">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Reservoirs & Dams</span>
                 <h2>Elan Valley</h2>
-                <p>A spectacular Victorian engineering marvel featuring six interconnected reservoirs and dams set in 70 square miles of stunning Welsh countryside. The Craig Goch dam, with its elegant curved design, is the most photographed.</p>
+                <p>A spectacular Victorian engineering marvel featuring six interconnected reservoirs and dams set in 70 square miles of stunning Welsh countryside. The Craig Goch dam, with its elegant curved design, is the most photographed. Designated an International Dark Sky Park in 2015.</p>
                 <div class="history">
                     <h4>📜 History</h4>
                     <p style="margin-bottom: 0;">Built between 1893-1904 to supply Birmingham with fresh water - an incredible 73 miles away, using gravity alone with no pumping required. The romantic poet Percy Bysshe Shelley lived at Nantgwyllt house, now submerged beneath the waters. Over 100 people were displaced when their homes were flooded.</p>
                 </div>
                 <div class="tips">
-                    <h4>📍 Visitor Tips</h4>
-                    <p style="margin-bottom: 0;">The Visitor Centre has a cafe with views. Walk across Craig Goch dam for photos. Best when the dams are overflowing after heavy rain. Free parking at the main visitor centre.</p>
+                    <h4>📍 Visitor Info</h4>
+                    <p style="margin-bottom: 0.5rem;"><strong>Hours:</strong> Winter 10am-4pm (Summer 9am-5pm) | <strong>Tel:</strong> 01597 810880</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Parking:</strong> Free first hour, £3 daily, £20 annual pass</p>
+                    <p style="margin-bottom: 0;"><strong>Facilities:</strong> Visitor centre, cafe, toilets, EV charging (2 points), e-bike hire available</p>
                 </div>
             </div>
         </div>
@@ -1247,7 +1307,16 @@
     <div class="modal-overlay" id="modal-hafren">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-hafren')">&times;</button>
-            <img class="modal-image" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80" alt="Hafren Forest">
+            <div class="image-scroller" id="scroller-hafren">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Source_of_the_River_Severn_-_geograph.org.uk_-_1390652.jpg?width=800" alt="Source of the River Severn">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hafren_Forest_-_geograph.org.uk_-_387653.jpg?width=800" alt="Hafren Forest Path">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Severn_Breaks_Its_Source_-_geograph.org.uk_-_51729.jpg?width=800" alt="Severn Source Trail">
+            </div>
+            <div class="image-dots" data-scroller="scroller-hafren">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Forest</span>
                 <h2>Hafren Forest</h2>
@@ -1267,7 +1336,18 @@
     <div class="modal-overlay" id="modal-vyrnwy">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-vyrnwy')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Vyrnwy_Straining_Tower.jpg?width=800" alt="Lake Vyrnwy">
+            <div class="image-scroller" id="scroller-vyrnwy">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vyrnwy_Straining_Tower.jpg?width=800" alt="Lake Vyrnwy Straining Tower">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Vyrnwy_Dam_-_geograph.org.uk_-_227645.jpg?width=800" alt="Lake Vyrnwy Dam">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Vyrnwy_-_geograph.org.uk_-_1023866.jpg?width=800" alt="Lake Vyrnwy Landscape">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Straining_Tower,_Lake_Vyrnwy_-_geograph.org.uk_-_577232.jpg?width=800" alt="Tower Reflection">
+            </div>
+            <div class="image-dots" data-scroller="scroller-vyrnwy">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Lake & Tower</span>
                 <h2>Lake Vyrnwy</h2>
@@ -1287,7 +1367,18 @@
     <div class="modal-overlay" id="modal-pistyll">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-pistyll')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pistyll_Rhaeadr_0073.JPG?width=800" alt="Pistyll Rhaeadr">
+            <div class="image-scroller" id="scroller-pistyll">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pistyll_Rhaeadr_0073.JPG?width=800" alt="Pistyll Rhaeadr Waterfall">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pistyll_Rhaeadr_waterfall_in_winter.jpg?width=800" alt="Pistyll Rhaeadr in Winter">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pistyll_Rhaeadr_close_up.jpg?width=800" alt="Pistyll Rhaeadr Close Up">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rainbow_at_Pistyll_Rhaeadr_-_geograph.org.uk_-_1003366.jpg?width=800" alt="Rainbow at Pistyll Rhaeadr">
+            </div>
+            <div class="image-dots" data-scroller="scroller-pistyll">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Waterfall</span>
                 <h2>Pistyll Rhaeadr</h2>
@@ -1307,7 +1398,18 @@
     <div class="modal-overlay" id="modal-cadair">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-cadair')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cadair_Idris.jpg?width=800" alt="Cadair Idris">
+            <div class="image-scroller" id="scroller-cadair">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cadair_Idris.jpg?width=800" alt="Cadair Idris">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Cau_and_Cadair_Idris.jpg?width=800" alt="Llyn Cau Crater Lake">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cadair_Idris_from_Llyn_Mwingil.jpg?width=800" alt="Cadair Idris from Llyn Mwingil">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cadair_Idris_from_Dolgellau_-_geograph.org.uk_-_1044.jpg?width=800" alt="Cadair Idris from Dolgellau">
+            </div>
+            <div class="image-dots" data-scroller="scroller-cadair">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Mountain</span>
                 <h2>Cadair Idris</h2>
@@ -1327,7 +1429,18 @@
     <div class="modal-overlay" id="modal-gwynant">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-gwynant')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Gwynant.JPG?width=800" alt="Llyn Gwynant">
+            <div class="image-scroller" id="scroller-gwynant">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Gwynant.JPG?width=800" alt="Llyn Gwynant">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Gwynant,_Snowdonia_-_geograph.org.uk_-_240152.jpg?width=800" alt="Llyn Gwynant Snowdonia">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Gwynant_reflection.jpg?width=800" alt="Llyn Gwynant Reflection">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nant_Gwynant_-_geograph.org.uk_-_476849.jpg?width=800" alt="Nant Gwynant Valley">
+            </div>
+            <div class="image-dots" data-scroller="scroller-gwynant">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Lake</span>
                 <h2>Llyn Gwynant</h2>
@@ -1347,7 +1460,18 @@
     <div class="modal-overlay" id="modal-beddgelert">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-beddgelert')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bedd_kelert_Beddgelert_bridge_and_village.jpeg?width=800" alt="Beddgelert">
+            <div class="image-scroller" id="scroller-beddgelert">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bedd_kelert_Beddgelert_bridge_and_village.jpeg?width=800" alt="Beddgelert Bridge and Village">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gelert's_Grave,_Beddgelert.jpg?width=800" alt="Gelert's Grave">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beddgelert_-_geograph.org.uk_-_1012.jpg?width=800" alt="Beddgelert Village">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Afon_Glaslyn_at_Beddgelert_-_geograph.org.uk_-_36095.jpg?width=800" alt="River Glaslyn at Beddgelert">
+            </div>
+            <div class="image-dots" data-scroller="scroller-beddgelert">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Village</span>
                 <h2>Beddgelert</h2>
@@ -1367,7 +1491,18 @@
     <div class="modal-overlay" id="modal-prysor">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal-prysor')">&times;</button>
-            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cwm_Prysor.jpg?width=800" alt="Cwm Prysor">
+            <div class="image-scroller" id="scroller-prysor">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cwm_Prysor.jpg?width=800" alt="Cwm Prysor Valley">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Trawsfynydd_-_geograph.org.uk_-_237106.jpg?width=800" alt="Llyn Trawsfynydd">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trawsfynydd_Power_Station_-_geograph.org.uk_-_34879.jpg?width=800" alt="Trawsfynydd Power Station">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rhinog_mountains_from_Trawsfynydd_-_geograph.org.uk_-_1274419.jpg?width=800" alt="Rhinog Mountains from Trawsfynydd">
+            </div>
+            <div class="image-dots" data-scroller="scroller-prysor">
+                <span class="image-dot active"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+                <span class="image-dot"></span>
+            </div>
             <div class="modal-body">
                 <span class="tag">Valley</span>
                 <h2>Cwm Prysor</h2>
@@ -1414,6 +1549,33 @@
                 });
                 document.body.style.overflow = 'auto';
             }
+        });
+
+        // Image scroller functionality
+        document.querySelectorAll('.image-scroller').forEach(scroller => {
+            const dots = scroller.nextElementSibling;
+            if (!dots || !dots.classList.contains('image-dots')) return;
+
+            const dotElements = dots.querySelectorAll('.image-dot');
+            const images = scroller.querySelectorAll('img');
+
+            // Click on dot to scroll
+            dotElements.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    images[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                });
+            });
+
+            // Update dots on scroll
+            scroller.addEventListener('scroll', () => {
+                const scrollLeft = scroller.scrollLeft;
+                const width = scroller.offsetWidth;
+                const activeIndex = Math.round(scrollLeft / width);
+
+                dotElements.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            });
         });
     </script>
 </body>
