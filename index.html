@@ -526,6 +526,126 @@
             font-size: 0.875rem;
         }
     </style>
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, var(--slate-800), var(--slate-900));
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body .tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald-400);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body p {
+            color: var(--slate-300);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-body .history {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 3px solid var(--amber-400);
+            padding: 1rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1rem 0;
+        }
+
+        .modal-body .history h4 {
+            color: var(--amber-400);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body .tips {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid var(--emerald-400);
+            padding: 1rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .modal-body .tips h4 {
+            color: var(--emerald-400);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .location-card {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="hero">
@@ -871,90 +991,98 @@
             <h2 class="section-title">The <span>Destinations</span></h2>
 
             <div class="locations-grid">
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-elan')">
                     <div class="location-img">
                         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Craig_Goch_Dam.jpg?width=640" alt="Craig Goch Dam, Elan Valley" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Elan Valley</h3>
                         <p>Spectacular Victorian dam complex with 6 reservoirs. Craig Goch dam featured in the TV drama Hinterland.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Built 1893-1904 to supply Birmingham (73 miles away) via gravity alone. The poet Shelley once lived in a house now under the water.</p>
                         <span class="location-tag">Reservoirs & Dams</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-hafren')">
                     <div class="location-img">
                         <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Hafren Forest" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Hafren Forest</h3>
                         <p>Source of the River Severn, Britain's longest river. Peaceful woodland walks to the spring.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">"Hafren" is the Welsh name for Severn, from the Celtic goddess Sabrina. The river flows 220 miles to the Bristol Channel.</p>
                         <span class="location-tag">Forest</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-vyrnwy')">
                     <div class="location-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Straining_Tower_through_the_dam.jpg?width=640" alt="Lake Vyrnwy Straining Tower" loading="lazy">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vyrnwy_Straining_Tower.jpg?width=640" alt="Lake Vyrnwy Straining Tower" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Lake Vyrnwy</h3>
                         <p>Grade I listed Gothic straining tower inspired by Swiss castles. 12-mile scenic drive around the lake.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Built 1888 to supply Liverpool with water. The village of Llanwddyn was drowned to create the reservoir - 37 houses, 2 chapels, and a church lost beneath the water.</p>
                         <span class="location-tag">Lake & Tower</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-pistyll')">
                     <div class="location-img">
                         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pistyll_Rhaeadr_0073.JPG?width=640" alt="Pistyll Rhaeadr Waterfall" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Pistyll Rhaeadr</h3>
                         <p>Wales' tallest waterfall (240ft) cascading through a natural rock arch. One of the Seven Wonders of Wales.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Listed as one of the "Seven Wonders of Wales" since the 18th century. George Borrow called it "the finest waterfall in Britain" in 1854.</p>
                         <span class="location-tag">Waterfall</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-cadair')">
                     <div class="location-img">
                         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cadair_Idris.jpg?width=640" alt="Cadair Idris Mountain" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Cadair Idris</h3>
                         <p>Legendary mountain (893m). Sleep on the summit and wake either a poet or a madman!</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Named "Chair of Idris" after a giant from Welsh mythology. The summit crater lake, Llyn Cau, is said to be bottomless and home to a monster.</p>
                         <span class="location-tag">Mountain</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-gwynant')">
                     <div class="location-img">
                         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Gwynant.JPG?width=640" alt="Llyn Gwynant Lake" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Llyn Gwynant</h3>
                         <p>Glacial lake featured in Tomb Raider. Perfect reflections of Snowdonia's peaks on still mornings.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Featured in the 2018 Tomb Raider film. The valley was carved by glaciers 10,000 years ago. "Gwynant" means "valley of the wind."</p>
                         <span class="location-tag">Lake</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-beddgelert')">
                     <div class="location-img">
                         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bedd_kelert_Beddgelert_bridge_and_village.jpeg?width=640" alt="Beddgelert Bridge and Village" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Beddgelert</h3>
                         <p>Snowdonia's prettiest village where two rivers meet. Britain in Bloom winner with the legend of Gelert.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Named after Gelert, a faithful hound killed by Prince Llywelyn who mistakenly thought the dog had killed his baby. The grave is in the village meadow.</p>
                         <span class="location-tag">Village</span>
                     </div>
                 </div>
 
-                <div class="location-card">
+                <div class="location-card" onclick="openModal('modal-prysor')">
                     <div class="location-img">
                         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cwm_Prysor.jpg?width=640" alt="Cwm Prysor Valley" loading="lazy">
                     </div>
                     <div class="location-content">
                         <h3>Cwm Prysor</h3>
                         <p>Remote mountain valley with Trawsfynydd Lake views. Wild and dramatic scenery off the beaten track.</p>
+                        <p style="font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-style: italic;">Trawsfynydd was home to Wales' only nuclear power station (1965-1991). The Roman road Sarn Helen passes through this wild landscape.</p>
                         <span class="location-tag">Valley</span>
                     </div>
                 </div>
@@ -1095,5 +1223,198 @@
             .quick-links { display: none !important; }
         }
     </style>
+    <!-- Location Modals -->
+    <div class="modal-overlay" id="modal-elan">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-elan')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Craig_Goch_Dam.jpg?width=800" alt="Elan Valley">
+            <div class="modal-body">
+                <span class="tag">Reservoirs & Dams</span>
+                <h2>Elan Valley</h2>
+                <p>A spectacular Victorian engineering marvel featuring six interconnected reservoirs and dams set in 70 square miles of stunning Welsh countryside. The Craig Goch dam, with its elegant curved design, is the most photographed.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">Built between 1893-1904 to supply Birmingham with fresh water - an incredible 73 miles away, using gravity alone with no pumping required. The romantic poet Percy Bysshe Shelley lived at Nantgwyllt house, now submerged beneath the waters. Over 100 people were displaced when their homes were flooded.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">The Visitor Centre has a cafe with views. Walk across Craig Goch dam for photos. Best when the dams are overflowing after heavy rain. Free parking at the main visitor centre.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-hafren">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-hafren')">&times;</button>
+            <img class="modal-image" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80" alt="Hafren Forest">
+            <div class="modal-body">
+                <span class="tag">Forest</span>
+                <h2>Hafren Forest</h2>
+                <p>Deep in the Cambrian Mountains lies the source of Britain's longest river. A peaceful Sitka spruce forest with waymarked trails leading to the spring where the mighty Severn begins its 220-mile journey to the sea.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">"Hafren" is the Welsh name for the Severn, derived from Sabrina - the Celtic goddess of the river. Roman legions marched through here, and legend says Sabrina was a princess drowned by her jealous stepmother, transformed into the river goddess by water nymphs.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">The source is a 3-mile walk from the car park. Wear waterproof boots - it's boggy! The forest road is single-track. No facilities so bring snacks and drinks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-vyrnwy">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-vyrnwy')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Vyrnwy_Straining_Tower.jpg?width=800" alt="Lake Vyrnwy">
+            <div class="modal-body">
+                <span class="tag">Lake & Tower</span>
+                <h2>Lake Vyrnwy</h2>
+                <p>A Gothic fairytale in the Welsh hills. The Grade I listed straining tower rises from the lake like something from a storybook, designed to resemble a Bavarian castle. The 12-mile circuit around the lake offers spectacular views at every turn.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">Completed in 1888 to supply Liverpool with water, this was the first large stone-built dam in Britain. The village of Llanwddyn was completely submerged - 37 houses, 2 chapels, a church, 3 pubs and a post office lost beneath 13 billion gallons of water. Villagers were relocated to a new settlement. In dry summers, old ruins sometimes emerge.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">RSPB reserve with red squirrels and ospreys. Cafe at the dam. The sculpture trail around the lake is excellent. Best photos of the tower from the dam walkway. 🚁 Great drone location!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-pistyll">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-pistyll')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pistyll_Rhaeadr_0073.JPG?width=800" alt="Pistyll Rhaeadr">
+            <div class="modal-body">
+                <span class="tag">Waterfall</span>
+                <h2>Pistyll Rhaeadr</h2>
+                <p>Wales' tallest single-drop waterfall at 240 feet (73m), cascading dramatically through a natural rock arch. Listed as one of the Seven Wonders of Wales alongside Snowdon and the bells of Gresford.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">The Seven Wonders of Wales were celebrated in an 18th-century rhyme. Victorian travel writer George Borrow declared it "the finest waterfall in Britain" in his 1854 book "Wild Wales". The natural rock arch is called "The Fairy Bridge" - legend says fairies use it to cross the falls.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">Small cafe at the base (cash preferred). 20-minute climb to the top for valley views - steep but worth it! £5 parking. The access road is very narrow - arrive early or late. 🚁 Spectacular drone shots possible!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-cadair">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-cadair')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cadair_Idris.jpg?width=800" alt="Cadair Idris">
+            <div class="modal-body">
+                <span class="tag">Mountain</span>
+                <h2>Cadair Idris</h2>
+                <p>A legendary mountain rising to 893 metres (2,930 ft), with dramatic cliff faces, glacial lakes, and sweeping views across Snowdonia. One of Wales' most mystical peaks, steeped in folklore and Arthurian legend.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">"Cadair Idris" means "Chair of Idris" - named after the giant Idris Gawr who used the mountain as his throne to sit and watch the stars. Legend warns that anyone who sleeps on the summit will wake as either a poet or a madman. The crater lake Llyn Cau is said to be bottomless and home to a monster. King Arthur allegedly fought his final battle nearby.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">The Pony Path (5 miles round trip) is easiest. Minffordd route is steeper but more dramatic. Check weather before attempting - conditions change fast! Car park at Minffordd (pay & display). Allow 5-6 hours for summit and return.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-gwynant">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-gwynant')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Llyn_Gwynant.JPG?width=800" alt="Llyn Gwynant">
+            <div class="modal-body">
+                <span class="tag">Lake</span>
+                <h2>Llyn Gwynant</h2>
+                <p>A stunning glacial lake cradled between mountains in the heart of Snowdonia. On still mornings, the water creates perfect mirror reflections of the surrounding peaks - a photographer's paradise.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">"Gwynant" means "valley of the wind" in Welsh. The valley was carved by glaciers during the last Ice Age, around 10,000 years ago. Featured in the 2018 Tomb Raider film starring Alicia Vikander, standing in for a remote Siberian landscape.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">Campsite at the north end with toilets. Walk along the eastern shore for best views. Early morning is magical for photos when the water is still. 🚁 Excellent drone location - fly low over the reflections!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-beddgelert">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-beddgelert')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bedd_kelert_Beddgelert_bridge_and_village.jpeg?width=800" alt="Beddgelert">
+            <div class="modal-body">
+                <span class="tag">Village</span>
+                <h2>Beddgelert</h2>
+                <p>Often called "Snowdonia's prettiest village", Beddgelert sits where the rivers Glaslyn and Colwyn meet. Stone bridges, tea rooms, and mountain views make this a perfect stopping point.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">"Beddgelert" means "Grave of Gelert" - after the legendary hound of Prince Llywelyn the Great. The story goes that Llywelyn returned from hunting to find his baby's cradle overturned and Gelert with blood on his jaws. He killed the dog, only to then find his baby alive under the cradle - and a dead wolf that Gelert had killed protecting the child. Heartbroken, Llywelyn never smiled again. (Though historians suggest the tale was invented in 1793 to attract tourists!)</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">Gelert's Grave is a short walk through the meadow. Glaslyn Ices is legendary - try the Welsh cake ice cream! The riverside walk is beautiful. Pubs serve good food. Paid parking in village centre.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-prysor">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-prysor')">&times;</button>
+            <img class="modal-image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cwm_Prysor.jpg?width=800" alt="Cwm Prysor">
+            <div class="modal-body">
+                <span class="tag">Valley</span>
+                <h2>Cwm Prysor</h2>
+                <p>A wild and remote mountain valley with views of Trawsfynydd Lake. This is off-the-beaten-track Wales - dramatic scenery with few other visitors. The road back to Dolgellau is spectacular at sunset.</p>
+                <div class="history">
+                    <h4>📜 History</h4>
+                    <p style="margin-bottom: 0;">Trawsfynydd was home to Wales' only inland nuclear power station, operational from 1965-1991. The Roman road "Sarn Helen" - possibly named after Helen of Caernarfon, wife of Emperor Magnus Maximus - passes through this ancient landscape, once connecting Roman forts across Wales.</p>
+                </div>
+                <div class="tips">
+                    <h4>📍 Visitor Tips</h4>
+                    <p style="margin-bottom: 0;">The narrow road has passing places - take it slow. No facilities so bring supplies. The nuclear power station is now being decommissioned - you can see it across the lake. Golden hour light here is incredible. 🚁 Remote = perfect drone flying!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 </body>
 </html>
